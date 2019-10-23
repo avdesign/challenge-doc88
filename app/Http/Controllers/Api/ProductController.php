@@ -45,6 +45,17 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return response([], 204);
+        return response(['success' => true, 'message' => 'Excluido'], 204);
+    }
+
+    /**
+     * @param Product $product
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function restore(Product $product)
+    {
+        dd($product);
+        $product->restore();
+        return response()->json([], 204);
     }
 }

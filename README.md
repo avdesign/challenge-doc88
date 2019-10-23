@@ -35,7 +35,7 @@ Gerenciamento de pedidos de uma pastelaria
 ````
 $ composer update
  ````
-* Crie um arquivo .env e copie as variaveis do arquivo .env.example
+* Crie um arquivo .env e copie e cole as variáveis do arquivo .env.example
 ````
 $ touch .env
 ````
