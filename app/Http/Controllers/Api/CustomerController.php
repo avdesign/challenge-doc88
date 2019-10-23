@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
-use App\Models\User;
+use App\Models\Customer;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\UserResource;
+use App\Http\Resources\Api\CustomersResource;
 
 
 
-class UserController extends Controller
+class CustomersController extends Controller
 {
-    private $perPage=15;
+    private $perPage=5;
 
     /**
      * Lista os usuários do sistema.
@@ -22,9 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate($this->perPage);
+        $customers = Customer::paginate($this->perPage);
 
-        return UserResource::collection($users);
+        return CustomersResource::collection($customers);
     }
 
     /**

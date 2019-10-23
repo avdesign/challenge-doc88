@@ -1,15 +1,20 @@
 # Back-end Challenge Doc88
 
-Gerenciamento de pedidos de uma pastelaria
+**Gerenciamento de pedidos de uma pastelaria**
+###### Autor: *Anselmo Velame*.
+
 
 *******
-1. [Inplementos](#implemen)
+1. [Sobre o projeto](#about)
 2. [Instalação](#install)
+3. [Módulo Pastel](#products)
+4. [Módulo Cliente](#customer)
+3. [Módulo Pedido](#orders)
 
 *******
-<div id='implemen'/>
+<div id='about'/>
 
-## Inplementos<br>
+## Sobre o projeto<br>
 * Foi implementado os cabeçalhos de solicitação HTTP(CORS) para não ter problemas com o "header" nas requisições do Front-end.
 ````
 -> app/Http/Middleware/CorsMiddleware.php
@@ -49,10 +54,36 @@ DB_PASSWORD=**********
 $ php artisan migrate --seed
 $ php artisan serve
 ````
+* Para testar o ambiente de desenvolvimento da API. use Postman ou similar.
+
+<div id='products'/>
+
+## Módulo Pastel<br>
+* **LISTAR OS PASTEIS**<br>
+    **method** : `GET`<br>
+    **url** : `http://localhost:8000/api/products`<br>
+    **per page** : `5 - http://localhost:8000/api/products?page=2` <br>
+    **total** : `15`
+    
+    
+* **CONSULTAR UM PASTEL ESPECÍFICO**<br>
+    **method** : `GET`<br>
+    **parameters** : `id, slug ou código`<br>
+    **url** : `http://localhost:8000/api/products/slug`
+    
+<div id='customer'/>
+
+## Módulo Cliente<br>
+
+<div id='orders'/>
+
+## Módulo Pedido<br>
 
 
 ## Instalação Docker com NGINX<br>
 * em desenvolvimento
+
+ 
  
  
  

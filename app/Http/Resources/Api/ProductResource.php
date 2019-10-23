@@ -16,7 +16,7 @@ class ProductResource extends JsonResource
     {
         $path = env('URL_PHOTOS');
         return [
-            //'id' => $this->id,
+            'id' => $this->id,
             'nome' => $this->name,
             'slug' => $this->slug,
             'codigo' => $this->code,

@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Support\Str;
 
 /*
@@ -36,9 +36,10 @@ $districts = [
     'Pinheiros'
 ];
 
-$factory->define(User::class, function () use($faker, $districts) {
+$factory->define(Customer::class, function () use($faker, $districts) {
 
     return [
+        'code' => $faker->unique()->ean13,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'phone' => cellNumbers('(11)'),

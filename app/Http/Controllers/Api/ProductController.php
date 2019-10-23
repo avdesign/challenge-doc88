@@ -9,7 +9,7 @@ use App\Http\Resources\Api\ProductResource;
 
 class ProductController extends Controller
 {
-    private $perPage=15;
+    private $perPage=5;
 
     /**
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
