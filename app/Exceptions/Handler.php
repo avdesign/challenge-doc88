@@ -26,6 +26,11 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    private $apiError = [
+        'api/products/*',
+        'api/categories/*'
+    ];
+
     /**
      * Report or log an exception.
      *
@@ -46,6 +51,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        //Mensagem personalizada dos errors
+        /*
+        if($request->is($this->apiError)){
+            $myexception = new \Exception("O servidor encontrou um erro e não pôde concluir sua solicitação");
+            return ['error' => $myexception->getMessage()];
+        }
+        */
+
+
         return parent::render($request, $exception);
     }
 }

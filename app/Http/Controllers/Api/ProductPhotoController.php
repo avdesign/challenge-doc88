@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Api\ProductPhotoCollection;
 use App\Models\Product;
 use App\Models\ProductPhoto;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ProductPhotosRequest;
+use App\Http\Resources\Api\ProductPhotoResource;
 
 use Illuminate\Http\Request;
 
@@ -12,13 +15,13 @@ use Illuminate\Http\Request;
 class ProductPhotoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resourceCollection.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Product $product)
     {
-        return $product->photos;
+        return new ProductPhotoCollection($product->photos, $product);
     }
 
 
@@ -28,9 +31,9 @@ class ProductPhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductPhotosRequest $request, Product $product)
     {
-        //
+        $photos = ProductPhoto::createWithPhotosFiles($product->id, $request->photos);
     }
 
     /**
@@ -39,9 +42,9 @@ class ProductPhotoController extends Controller
      * @param  \App\Models\ProductPhoto  $productPhoto
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductPhoto $productPhoto)
+    public function show(Product $product, ProductPhoto $photo)
     {
-        //
+        return new ProductPhotoResource($photo);
     }
 
 

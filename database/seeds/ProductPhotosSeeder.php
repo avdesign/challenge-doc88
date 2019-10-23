@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 
 class ProductPhotosSeeder extends Seeder
 {
-
     /**
      * @var Collection
      */
@@ -89,6 +88,7 @@ class ProductPhotosSeeder extends Seeder
         ]);
 
         $this->generatePhoto($photo);
+
     }
 
 

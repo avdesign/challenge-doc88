@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +26,22 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        // Consultar Category pelo id ou pelo slug
+        Route::bind('category', function($value){
+            /** @var Collection $collection */
+            $collection = Category::whereId($value)->orWhere('slug', $value)->get();
+            return $collection->first();
+        });
+
+        // Consultar Product pelos id, code ou slug
+        Route::bind('product', function($value){
+            /** @var Collection $collection */
+            $collection = Product::whereId($value)->orWhere('code', $value)->orWhere('slug', $value)->get();
+            return $collection->first();
+        });
+
     }
 
     /**
