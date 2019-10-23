@@ -1,4 +1,5 @@
 *
-!faker/product_photos
-!public/
+!/faker
+/faker/*
+!/foo/product_photos
 !.gitignore
