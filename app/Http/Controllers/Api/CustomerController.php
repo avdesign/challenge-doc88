@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CustomerRequest;
 use App\Http\Resources\Api\CustomersResource;
 
 
@@ -27,15 +28,6 @@ class CustomersController extends Controller
         return CustomersResource::collection($customers);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,9 +35,10 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-        //
+        $customer = Customer::createCustomer($request->all());
+        return new CustomersResource($customer);
     }
 
     /**

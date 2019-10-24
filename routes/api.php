@@ -10,7 +10,7 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
     Route::resource('products', 'ProductController', ['except' => ['create', 'edit']]);
 
     Route::resource('products.photos', 'ProductPhotoController', ['except' => ['create', 'edit']]);
-    Route::resource('clientes', 'CustomersController', ['except' => ['create', 'edit']]);
+    Route::resource('customers', 'CustomersController', ['except' => ['create', 'edit']]);
 
 });
 

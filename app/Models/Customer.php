@@ -23,7 +23,7 @@ class Customer extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email','phone','address','complement','district','zipcode','birth_date','password'
+        'name','code','email','phone','address','complement','district','zipcode','birth_date','password'
     ];
 
     /**
@@ -43,4 +43,21 @@ class Customer extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create
+     *
+     * @param array $attriibutes
+     * @return mixed
+     */
+    public static function createCustomer($attriibutes = array())
+    {
+        $code = uniqid(date('YmdHis'));
+        $attriibutes['code'] = returnNumber($code);
+
+        !isset($attriibutes['email'])?:$attriibutes['email'] = strtolower($attriibutes['email']);
+        !isset($attriibutes['password'])?:$attriibutes['password'] = bcrypt($attriibutes['password']);
+
+        return parent::create($attriibutes);
+    }
 }

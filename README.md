@@ -62,18 +62,48 @@ $ php artisan serve
 * **LISTAR OS PASTEIS**<br>
     **method** : `GET`<br>
     **url** : `http://localhost:8000/api/products`<br>
-    **per page** : `5 - http://localhost:8000/api/products?page=2` <br>
-    **total** : `15`
+    **paginate** : `http://localhost:8000/api/products?page=2` <br>
+    **per page** : `5`
     
     
 * **CONSULTAR UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameters** : `id, slug ou código`<br>
+    **parameters** : `id, slug ou código.`<br>
     **url** : `http://localhost:8000/api/products/slug`
     
 <div id='customer'/>
 
 ## Módulo Cliente<br>
+* **LISTAR OS CLIENTES**<br>
+    **method** : `GET`<br>
+    **url** : `http://localhost:8000/api/customers`<br>
+    **paginate** : `http://localhost:8000/api/customers?page=2` <br>
+    **per page** : `5`
+    
+* **CADASTRO DE CLIENTE (JSON)**<br>
+    **method** : `POST`<br>
+    **url** : `http://localhost:8000/api/customers` <br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br>
+    **Execultar com os atributos abaixo** : 
+````
+    {
+        "name": "Anselmo Velame",
+        "email": "design@anselmovelame.com.br",
+        "phone": "(11)93209-2772",
+        "address": "Rua Condessa Siciliano 27",
+        "complement": "Ap. 05",
+        "district": "Jd. São Paulo",
+        "zipcode": "02044-050",
+        "birth_date": "07/07/1962",
+        "password": "secret"
+    }
+````
+* **CONSULTAR UM CILENTE ESPECÍFICO**<br>
+    **method** : `GET`<br>
+    **parameters** : `código.`<br>
+    **url** : `http://localhost:8000/api/customers/codigo`
+
 
 <div id='orders'/>
 

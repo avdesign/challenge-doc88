@@ -47,3 +47,16 @@ if (! function_exists('cellNumbers')) {
 }
 
 
+/**
+ * Retorna só número de uma string;
+ */
+if ( !function_exists('returnNumber'))
+{
+    function returnNumber($str)
+    {
+        return preg_replace("/[^0-9]/", "", $str);
+    }
+}
+
+
+
