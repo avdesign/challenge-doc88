@@ -20,6 +20,10 @@
 -> app/Http/Middleware/CorsMiddleware.php
 -> app/Http/Kernel.php
 ````
+* Como alterar os parametros de busca.
+````
+-> app/Providers/RouteServiceProvider.php
+````
 * Para não inflar as respostas em JSON e como não é aconselhado o retorno com os mesmos nomes dos campos do banco de dados , criei os Resources/ResourcesCollection com os nomes dos campos que são realmente retornadas aos usuários do aplicativo.  
 ````
 -> app/Http/Resources/Api/
@@ -45,9 +49,9 @@ $ composer update
 $ touch .env
 ````
 * Configure seu banco de dados.<br>
-DB_DATABASE=**********  
-DB_USERNAME=**********  
-DB_PASSWORD=**********
+DB_DATABASE=challenge_doc88 <br>
+DB_USERNAME=root  
+DB_PASSWORD=secret
 
 * Para criar as tabelas e gerar as fotos dos pasteis digite os camandos: 
 ````
