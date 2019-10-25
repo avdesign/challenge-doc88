@@ -45,19 +45,28 @@ class Customer extends Authenticatable
     ];
 
     /**
-     * Create
+     * Set the customers email.
      *
-     * @param array $attriibutes
-     * @return mixed
+     * @param  string  $value
+     * @return void
      */
-    public static function createCustomer($attriibutes = array())
+    public function setEmailAttribute($value)
     {
-        $code = uniqid(date('YmdHis'));
-        $attriibutes['code'] = returnNumber($code);
-
-        !isset($attriibutes['email'])?:$attriibutes['email'] = strtolower($attriibutes['email']);
-        !isset($attriibutes['password'])?:$attriibutes['password'] = bcrypt($attriibutes['password']);
-
-        return parent::create($attriibutes);
+        $this->attributes['email'] = strtolower($value);
     }
+
+
+    /**
+     * Set the customers password.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt(trim($value));
+    }
+
+
+
 }

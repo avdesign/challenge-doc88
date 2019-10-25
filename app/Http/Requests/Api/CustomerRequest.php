@@ -23,17 +23,32 @@ class CustomerRequest extends FormRequest
      */
     public function rules()
     {
-        ( $this->method() == 'POST' ? $id = '' : $id = $this->get('id') );
+        if ($this->method() == 'POST') {
+
+            return [
+                'password' => 'required|min:4|max:16'
+            ];
+        }
+
+        if ($this->method() == 'PUT') {
+            $password = $this->input('password');
+            if (!empty($password) ) {
+                return [
+                    'password' => 'required|min:4|max:16'
+                ];
+            }
+        }
+
+        ( $this->method() == 'POST' ? $code = '' : $code = $this->get('code') );
 
         return [
-            'email' => "required|email|unique:customers,email,{$id},id",
+            'email' => "required|email|unique:customers,email,{$code},code",
             'name' => 'required',
             'phone' => 'celular_com_ddd',
             'address' => 'required',
             'district' => 'required',
             'zipcode' => 'formato_cep',
-            'birth_date' => 'date_format:d/m/Y',
-            'password' => 'required|min:3|max:8'
+            'birth_date' => 'date_format:d/m/Y'
         ];
     }
 

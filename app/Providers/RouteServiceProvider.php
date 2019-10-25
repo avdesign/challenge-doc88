@@ -4,12 +4,16 @@ namespace App\Providers;
 
 use App\Models\Product;
 use App\Models\Customer;
+use App\Traits\OnlyTrashed;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    use OnlyTrashed;
     /**
      * This namespace is applied to your controller routes.
      *
@@ -20,7 +24,8 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
+     * Um exemplo de como podemos trabalhar Route::bind().
+     * Em um projeto com muitas rotas é aconselhavel
      *
      * @return void
      */
@@ -28,19 +33,30 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        // Consultar Cliente pelo id ou pelo slug
+        // Consultar Cliente pelo id ou pelo código
         Route::bind('customer', function($value){
+
+            $query = Customer::query();
+            $request = app(Request::class);
+            $query = $this->onlyTrashedIfRequested($request, $query);
+
             /** @var Collection $collection */
-            $collection = Customer::whereId($value)->orWhere('code', $value)->get();
+            $collection = $query->whereId($value)->orWhere('code', $value)->get();
+            return $collection->first();
+
+
+        });
+
+        // Consultar Product pelo id ou pelo slug
+        Route::bind('product', function($value){
+            $query = Product::query();
+            $request = app(Request::class);
+            $query = $this->onlyTrashedIfRequested($request, $query);
+            /** @var Collection $collection */
+            $collection = $query->whereId($value)->orWhere('code', $value)->orWhere('slug', $value)->get();
             return $collection->first();
         });
 
-        // Consultar Produto pelos id, code ou slug
-        Route::bind('product', function($value){
-            /** @var Collection $collection */
-            $collection = Product::whereId($value)->orWhere('code', $value)->orWhere('slug', $value)->get();
-            return $collection->first();
-        });
 
     }
 

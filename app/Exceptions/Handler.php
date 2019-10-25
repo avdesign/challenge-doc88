@@ -3,10 +3,16 @@
 namespace App\Exceptions;
 
 use Exception;
+use App\Exceptions\ExceptionTrait;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+
 
 class Handler extends ExceptionHandler
 {
+    use ExceptionTrait;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -24,11 +30,6 @@ class Handler extends ExceptionHandler
     protected $dontFlash = [
         'password',
         'password_confirmation',
-    ];
-
-    private $apiError = [
-        'api/products/*',
-        'api/categories/*'
     ];
 
     /**
@@ -51,15 +52,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        //Mensagem personalizada dos errors
-        /*
-        if($request->is($this->apiError)){
-            $myexception = new \Exception("O servidor encontrou um erro e não pôde concluir sua solicitação");
-            return ['error' => $myexception->getMessage()];
+        //dd($exception);
+
+        if ($request->expectsJson()) {
+
+            if ($exception instanceof ValidationException) {
+
+                return parent::render($request, $exception);
+            }
+            return $this->apiException($request,$exception);
         }
-        */
-
-
         return parent::render($request, $exception);
+
     }
+
+
 }

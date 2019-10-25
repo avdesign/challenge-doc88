@@ -31,6 +31,7 @@ class ProductPhotoResource extends JsonResource
 
         $data = [
             'id' => $this->id,
+            'capa' => $this->cover,
             'foto_url' => $this->photo_url,
             'data_criado' => date('d/m/Y', strtotime($this->created_at)),
         ];

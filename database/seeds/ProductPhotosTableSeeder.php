@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 
-class ProductPhotosSeeder extends Seeder
+class ProductPhotosTableSeeder extends Seeder
 {
     /**
      * @var Collection
@@ -72,7 +72,7 @@ class ProductPhotosSeeder extends Seeder
      */
     private function createPhotosModels(Product $product)
     {
-        foreach (range(1,1) as $v) {
+        foreach (range(1,5) as $v) {
             $this->createPhotoModel($product);
         }
     }
@@ -88,7 +88,6 @@ class ProductPhotosSeeder extends Seeder
         ]);
 
         $this->generatePhoto($photo);
-
     }
 
 
@@ -98,7 +97,12 @@ class ProductPhotosSeeder extends Seeder
         $photo->save();
     }
 
-
+    /**
+     *
+     *
+     * @param $productId
+     * @return string
+     */
     private function uploadPhoto($productId): string
     {
         /** @var SpfFileInfo $fotoFile */
@@ -112,5 +116,4 @@ class ProductPhotosSeeder extends Seeder
 
         return $uploadFile->hashName();
     }
-
 }

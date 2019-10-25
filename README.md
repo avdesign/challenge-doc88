@@ -20,21 +20,36 @@
 -> app/Http/Middleware/CorsMiddleware.php
 -> app/Http/Kernel.php
 ````
-* Como alterar os parametros de busca.
+* Como se trata de um projeto simples resolvir trabalhar com um conceito chamado de **Route Model Binding**;
+* Parâmetros para consulta de um dado específico: $query->whereId($value)->orWhere('code', $value)->get();
+* Consulta dos dados excluidos: Basta passar o parâmetro '?trashed=1';
+ .
 ````
 -> app/Providers/RouteServiceProvider.php
+-> app/Traits/OnlyTrashed.php
 ````
-* Para não inflar as respostas em JSON e como não é aconselhado o retorno com os mesmos nomes dos campos do banco de dados , criei os Resources/ResourcesCollection com os nomes dos campos que são realmente retornadas aos usuários do aplicativo.  
+* Aqui estão os responses **ResourcesJson/ResourcesCollection**, com os nomes dos campos que são realmente retornados aos usuários do aplicativo.  
 ````
 -> app/Http/Resources/Api/
 ````
-* Através da variável URL_PHOTOS localizada no arquivo .env, você poderá alterar o nome da url das fotos caso seja necessário.
+* A quantidade de fotos de cada pastel deixei como **opcional** adicionar mais de uma, sendo que a principal basta deixar o campo **capa=1**.
+* Quanto ao upload das fotos podem ser em storage diferente do sistema. 
  ````
- URL_PHOTOS=http://localhost:8000
+ Fotos Faker: ProductPhotosSeeder -> createPhotosModels
+ Define Path: Models/ProductPhoto -> FILESYSTEM_DRIVER
  ````
+ * Trait das exceptions personalizadas para api:  
+ ````
+ -> app/Exceptions/ExceptionTrait.php
+ ````
+ * Functions personalzadas:
+ ````
+ _Helpers/functions.php
+ ````
+ 
 <div id='install'/>
 
-## Instalação com o Composer<br>
+## Instalação: Via Composer (LAMP)<br>
 
 * Clone ou faça o download do projeto.
  ````
@@ -52,6 +67,12 @@ $ touch .env
 DB_DATABASE=challenge_doc88 <br>
 DB_USERNAME=root  
 DB_PASSWORD=secret
+
+* Permissões de pastas e  link simbólico : 
+````
+$ chmod 777 -R stotage
+$ php artisan stotage:link
+````
 
 * Para criar as tabelas e gerar as fotos dos pasteis digite os camandos: 
 ````
@@ -75,6 +96,8 @@ $ php artisan serve
     **parameters** : `id, slug ou código.`<br>
     **url** : `http://localhost:8000/api/products/slug`
     
+    http://localhost:8000/api/products/1/restore?trashed=1
+    
 <div id='customer'/>
 
 ## Módulo Cliente<br>
@@ -91,7 +114,7 @@ $ php artisan serve
     **headers**  `Content-Type: application/json`<br>
     **Execultar com os atributos abaixo** : 
 ````
-    {
+    {        
         "name": "Anselmo Velame",
         "email": "design@anselmovelame.com.br",
         "phone": "(11)93209-2772",
@@ -105,16 +128,43 @@ $ php artisan serve
 ````
 * **CONSULTAR UM CILENTE ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameters** : `código.`<br>
+    **parameters** : `códig ou id.`<br>
     **url** : `http://localhost:8000/api/customers/codigo`
+    **excluidos** : `http://localhost:8000/api/customers/codigo?trashed=1`
 
+* **ALTEAR CLIENTE (JSON)**<br>
+    **method** : `PUT`<br>
+    **url** : `http://localhost:8000/api/customers/code` <br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br>
+    **Execultar com os atributos abaixo** : 
+````
+    {   
+        "code": "código do cliente",     
+        "name": "Anselmo Velame",
+        "email": "design@anselmovelame.com.br",
+        "phone": "(11)93209-2772",
+        "address": "Rua Condessa Siciliano 27",
+        "complement": "Ap. 05",
+        "district": "Jd. São Paulo",
+        "zipcode": "02044-050",
+        "birth_date": "07/07/1962",
+        "password": "secret"
+    }
+````  
+* **EXCLUSÃO DO CLIENTE (JSON)**<br>
+    **method** : `PATCH`<br>
+    **url** : `http://localhost:8000/api/customers/code` <br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br>
+  
 
 <div id='orders'/>
 
 ## Módulo Pedido<br>
 
 
-## Instalação Docker com NGINX<br>
+## Instalação: Docker (NGINX)<br>
 * em desenvolvimento
 
  

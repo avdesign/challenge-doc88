@@ -23,7 +23,6 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        dd($request->all());
         $product = Product::create($request->all());
         $product->refresh();
         return $product;
@@ -54,8 +53,8 @@ class ProductController extends Controller
      */
     public function restore(Product $product)
     {
-        dd($product);
         $product->restore();
-        return response()->json([], 204);
+
+        return new ProductResource($product);
     }
 }

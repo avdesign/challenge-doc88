@@ -2,50 +2,59 @@
 
 namespace App\Http\Controllers\Api;
 
-
-use Illuminate\Http\Request;
-
 use App\Models\Customer;
+use App\Traits\OnlyTrashed;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CustomerRequest;
 use App\Http\Resources\Api\CustomersResource;
 
+use Illuminate\Http\Request;
 
 
 class CustomersController extends Controller
 {
+    use OnlyTrashed;
+
     private $perPage=5;
 
     /**
-     * Lista os usuários do sistema.
+     * Lista os Clientes do sistema.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::paginate($this->perPage);
+        //Consultar a query com o lixo quando for requisitado.
+        $query = Customer::query();
+        $query = $this->onlyTrashedIfRequested($request, $query);
+        $customers = $query->paginate($this->perPage);
 
         return CustomersResource::collection($customers);
     }
 
 
     /**
-     * Store a newly created resource in storage.
+     * Criar cliente com um código unico.
      *
      * @param  \App\Http\Requests\Api\CustomerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CustomerRequest $request)
     {
-        $customer = Customer::createCustomer($request->all());
+        $dataJson = $request->all();
+        // Código unico do cliente
+        $code = uniqid(date('YmdHis'));
+        $dataJson['code'] = returnNumber($code);
+
+        $customer = Customer::create($dataJson);
         return new CustomersResource($customer);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $customer
-     * @return \Illuminate\Http\Response
+     * Retorna o cliente especifico
+     *    *
+     * @param Customer $customer
+     * @return CustomersResource
      */
     public function show(Customer $customer)
     {
@@ -53,27 +62,38 @@ class CustomersController extends Controller
     }
 
 
-
     /**
-     * Update the specified resource in storage.
+     * Método fill vai hidratar somente os dados seguros da variável $fillable do model
      *
-     * @param  \App\Http\Requests\Api\CustomerRequest
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param CustomerRequest $request
+     * @param Customer $customer
      */
-    public function update(Request $request, $id)
+    public function update(CustomerRequest $request, Customer $customer)
     {
-        //
+        $customer->fill($request->all());
+        $customer->save();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the Customer.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Customer $customer
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return response()->json([], 204);
+    }
+
+
+    public function respondNotFound($message)
+    {
+        $error['status_code'] = 404;
+        if (!!$message) {
+            $error['message'] = $message;
+        }
+
+        return response(compact('error'), 404);
     }
 }

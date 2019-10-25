@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Price: Real
+* Valor em Real
 *
 * @param  decimal $value
 */
@@ -12,7 +12,7 @@ if (! function_exists('formatReal')) {
 }
 
 /**
- *Words Shuffle
+ *Palavras Aleatórias
  *
  * @param  array $array
  */
@@ -33,7 +33,7 @@ if (! function_exists('wordsShuffle')) {
 }
 
 /**
- *Cell Numbers
+ * Gerar números de celulares aleatórios (pt-Br)
  *
  * @param  string $prefix
  */
