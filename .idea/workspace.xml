@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dacf9c8e-6c67-4a27-b106-0cb834fc3374" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env.example" afterPath="$PROJECT_DIR$/.env.example" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ProductPhotoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ProductPhotoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/Api/ProductPhotosRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/ProductPhotosRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Resources/Api/ProductPhotoResource.php" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/ProductPhotoResource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/ProductPhoto.php" afterPath="$PROJECT_DIR$/app/Models/ProductPhoto.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +19,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="190">
-                <caret line="126" column="27" lean-forward="true" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
+                <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -473,12 +467,12 @@
       <workItem from="1571965050893" duration="24683000" />
       <workItem from="1572006016749" duration="22530000" />
       <workItem from="1572049051420" duration="62000" />
-      <workItem from="1572089703111" duration="9661000" />
+      <workItem from="1572089703111" duration="10002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233632000" />
+    <option name="totallyTimeSpent" value="233973000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -883,7 +877,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="190">
-            <caret line="126" column="27" lean-forward="true" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
+            <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
             <folding />
           </first_editor>
           <second_editor />

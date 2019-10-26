@@ -127,7 +127,7 @@ $ php artisan serve
     **type** : `files`<br> 
          
          
- **Obs** : `Para ter acesso as fotod, não esquecer do camando:  php artisan storage:linl `<br>     
+ **Obs** : `Para ter acesso as fotos, não esquecer do camando:  php artisan storage:link `<br>     
       
     
 <div id='customer'/>
