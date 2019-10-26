@@ -18,6 +18,15 @@ class ProductPhoto extends Model
     protected $fillable = ['file_name','product_id'];
 
 
+    /**
+     * Uploading multiple files
+     * Fazer a criação com os files retornando uma Collection do Eloquent.     *
+     *
+     * @param int $productId
+     * @param array $files
+     * @return Collection
+     * @throws \Exception
+     */
     public static function createWithPhotosFiles(int $productId, array $files): Collection
     {
         try{
@@ -77,6 +86,8 @@ class ProductPhoto extends Model
 
 
     /**
+     * Retornar um array com todas as fotos que foram criadas.
+     *
      * @param int $productId
      * @param array $files
      * @return array
@@ -94,6 +105,7 @@ class ProductPhoto extends Model
     }
 
     /**
+     * Gerar caminho da imagem photo_url
      * Verificar se o driver está no cloud ou local
      *
      * @return string
@@ -121,6 +133,7 @@ class ProductPhoto extends Model
 
 
     /**
+     * Retorna o dire
      * @param $productId
      * @return string
      */

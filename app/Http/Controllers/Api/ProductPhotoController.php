@@ -27,6 +27,8 @@ class ProductPhotoController extends Controller
 
 
     /**
+     * Upload das fotos de um produto específico.
+     *
      *
      * @param ProductPhotosRequest $request
      * @param Product $product

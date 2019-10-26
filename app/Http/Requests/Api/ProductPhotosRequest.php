@@ -26,6 +26,9 @@ class ProductPhotosRequest extends FormRequest
         return !$this->route('photo') ? $this->rulesCreate() : $this->rulesUpdate();
     }
 
+    /**
+     * @return array
+     */
     private function rulesCreate()
     {
         return [
@@ -50,7 +53,7 @@ class ProductPhotosRequest extends FormRequest
             'photos.array' => 'O campo file photos tem que ser com anotações de array.Ex:photos[]',
             'photos.image' => 'O campo Fotos deverá conter uma imagem.',
             'photos.mimes' => 'O campo Fotos deverá conter um arquivo do tipo: jpeg,png,jpg,gif,svg',
-            'photos.max' => 'O campo Fotos deverá ter o tamanho de 3072 kilobytes',
+            'photos.max' => 'O campo Fotos deverá ter o tamanho de 3 megas',
         ];
     }
 }

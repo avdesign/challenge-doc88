@@ -12,6 +12,13 @@ class ProductPhotoResource extends JsonResource
      */
     private $isCollection;
 
+    /**
+     * Verifica se é uma Collection.
+     *
+     * ProductPhotoResource constructor.
+     * @param mixed $resource
+     * @param bool $isCollection
+     */
     public function __construct($resource, $isCollection = false)
     {
         parent::__construct($resource);
@@ -27,12 +34,10 @@ class ProductPhotoResource extends JsonResource
      */
     public function toArray($request)
     {
-        $path = env('URL_PHOTOS');
-
         $data = [
             'id' => $this->id,
             'capa' => $this->cover,
-            'foto_url' => $this->photo_url,
+            'foto_url' => $this->photo_url, #getPhotoUrlAttribute()
             'data_criado' => date('d/m/Y', strtotime($this->created_at)),
         ];
 

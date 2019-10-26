@@ -97,23 +97,37 @@ $ php artisan serve
     
 * **CONSULTAR UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameters** : `id, slug ou código.`<br>
-    **url** : `http://localhost:8000/api/products/parameter`   
-    
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br>
+    **parameters** : `id, slug ou código do pastel.`<br>
+    **url** : `http://localhost:8000/api/products/parameter` 
     
 * **CONSULTAR FOTOS DE UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameters** : `id, slug ou código.`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br>
+    **parameters** : `id, slug ou código do pastel.`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos`<br>
     
 * **CONSULTAR UMA FOTO ESPECÍFICA**<br>
     **method** : `GET`<br>
-    **parameters** : `id, slug ou código.`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br>
+    **parameters** : `id, slug ou código do pastel.`<br>
     **id** : `id da foto`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos/id`<br> 
     **return** : `Dados da foto e do pastel`<br> 
-     
-      
+    
+* **UPLOAD DAS FOTOS DE UM PASTEL ESPECÍFICO**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **parameters** : `id, slug ou código do pastel.`<br>
+    **url** : `http://localhost:8000/api/products/parameter/photos`<br> 
+    **key** : `photos[]`<br> 
+    **type** : `files`<br> 
+         
+         
+ **Obs** : `Para ter acesso as fotod, não esquecer do camando:  php artisan storage:linl `<br>     
       
     
 <div id='customer'/>
