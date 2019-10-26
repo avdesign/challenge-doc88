@@ -90,13 +90,31 @@ $ php artisan serve
     **paginate** : `http://localhost:8000/api/products?page=2` <br>
     **per page** : `5`
     
+* **CONSULTAR UM PASTEL ESPECÍFICO**<br>
+    **method** : `GET`<br>
+    **parameters** : `id, slug ou código.`<br>
+    **url** : `http://localhost:8000/api/products/parameter`
     
 * **CONSULTAR UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
     **parameters** : `id, slug ou código.`<br>
-    **url** : `http://localhost:8000/api/products/slug`
+    **url** : `http://localhost:8000/api/products/parameter`   
     
-    http://localhost:8000/api/products/1/restore?trashed=1
+    
+* **CONSULTAR FOTOS DE UM PASTEL ESPECÍFICO**<br>
+    **method** : `GET`<br>
+    **parameters** : `id, slug ou código.`<br>
+    **url** : `http://localhost:8000/api/products/parameter/photos`<br>
+    
+* **CONSULTAR UMA FOTO ESPECÍFICA**<br>
+    **method** : `GET`<br>
+    **parameters** : `id, slug ou código.`<br>
+    **id** : `id da foto`<br>
+    **url** : `http://localhost:8000/api/products/parameter/photos/id`<br> 
+    **return** : `Dados da foto e do pastel`<br> 
+     
+      
+      
     
 <div id='customer'/>
 
@@ -152,13 +170,19 @@ $ php artisan serve
         "password": "secret"
     }
 ````  
-* **EXCLUSÃO DO CLIENTE (JSON)**<br>
+* **EXCLUSÃO DO CLIENTE**<br>
+    **method** : `PATCH`<br>
+    **url** : `http://localhost:8000/api/customers/code` <br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Content-Type: application/json`<br> 
+    
+* **RESTAURAR UM CILENTE ESPECÍFICO**<br>
     **method** : `PATCH`<br>
     **url** : `http://localhost:8000/api/customers/code` <br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br>
-  
-
+    
+    
 <div id='orders'/>
 
 ## Módulo Pedido<br>

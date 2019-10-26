@@ -15,9 +15,10 @@ use Illuminate\Http\Request;
 class ProductPhotoController extends Controller
 {
     /**
-     * Display a listing of the resourceCollection.
+     * Lista todas as fotos do produto específico.
      *
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return ProductPhotoCollection
      */
     public function index(Product $product)
     {
@@ -26,10 +27,9 @@ class ProductPhotoController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ProductPhotosRequest $request
+     * @param Product $product
      */
     public function store(ProductPhotosRequest $request, Product $product)
     {
@@ -37,10 +37,11 @@ class ProductPhotoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Retorna os dados da foto do produto específico.
      *
-     * @param  \App\Models\ProductPhoto  $productPhoto
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @param ProductPhoto $photo
+     * @return ProductPhotoResource
      */
     public function show(Product $product, ProductPhoto $photo)
     {

@@ -87,13 +87,17 @@ class CustomersController extends Controller
     }
 
 
-    public function respondNotFound($message)
+    /**
+     * @param Customer $customer
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function restore(Customer $customer)
     {
-        $error['status_code'] = 404;
-        if (!!$message) {
-            $error['message'] = $message;
-        }
+        $customer->restore();
 
-        return response(compact('error'), 404);
+        return new ProductResource($customer);
     }
+
+
+
 }
