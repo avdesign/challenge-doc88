@@ -20,6 +20,7 @@ class OrderController extends Controller
     public function __construct(InterModel $interModel)
     {
         $this->interModel = $interModel;
+        // Este tipo de validação pode ser gerado de um bd.
         $this->messages = array(
             'amount.required'  => 'A quantidade é obrigatória.',
             'amount.numeric'  => 'A quantidade tem de ser um número inteiro.',
@@ -27,7 +28,6 @@ class OrderController extends Controller
             'customer.numeric'  => 'A código tem de ser um número inteiro.',
             'product.required'  => 'O código do produto é obrigatório.',
             'product.numeric'  => 'A código tem de ser um número inteiro.',
-
         );
     }
 
