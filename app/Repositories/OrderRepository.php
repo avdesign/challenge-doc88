@@ -40,6 +40,12 @@ class OrderRepository implements OrderInterface
         $this->validate($input, $this->model->rules($id), $messages);
     }
 
+    public function getAll()
+    {
+        $data  = $this->model->where('admin_id', $id)->get();
+        return $data;
+    }
+
     /**
      * @param $input
      * @return mixed

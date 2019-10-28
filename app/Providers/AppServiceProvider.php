@@ -9,13 +9,26 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     *
      *
      * @return void
      */
     public function register()
     {
+        // Enviar email para o cliene (created e updated).
         Order::observe(OrderObserver::class);
+
+        //Adicione quantos quiser no array.
+        $models = array(
+            'OrderInterface'
+        );
+
+        //Faz o loop para adicionar a Interface e o Repository do Model
+        foreach ($models as $model) {
+            $this->app->bind("App\Interfaces\\{$model}Interface", "App\Repositories\\{$model}Repository");
+        }
+
+
     }
 
     /**
