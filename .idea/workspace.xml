@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dacf9c8e-6c67-4a27-b106-0cb834fc3374" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,6 +16,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="186">
+                <caret line="264" column="18" lean-forward="false" selection-start-line="264" selection-start-column="18" selection-end-line="264" selection-end-column="18" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="OrderResource.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -26,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RouteServiceProvider.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RouteServiceProvider.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
+            <state relative-caret-position="108">
+              <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
               <folding>
                 <element signature="e#33#54#0#PHP" expanded="true" />
               </folding>
@@ -160,7 +173,6 @@
         <option value="$PROJECT_DIR$/app/Http/Requests/Api/ProductRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Models/Order.php" />
@@ -170,6 +182,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/OrderController.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php" />
         <option value="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -642,12 +655,12 @@
       <workItem from="1572185460634" duration="3129000" />
       <workItem from="1572217191462" duration="14357000" />
       <workItem from="1572234885729" duration="10536000" />
-      <workItem from="1572246853560" duration="6325000" />
+      <workItem from="1572246853560" duration="7808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311498000" />
+    <option name="totallyTimeSpent" value="312981000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -662,7 +675,7 @@
     <frame x="165" y="66" width="1299" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13088587" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985073" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -925,17 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="4698">
-            <caret line="261" column="1" lean-forward="false" selection-start-line="261" selection-start-column="1" selection-end-line="261" selection-end-column="1" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_20_225422_create_products_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -1082,11 +1084,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
+        <state relative-caret-position="108">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
           <folding>
             <element signature="e#33#54#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="186">
+            <caret line="264" column="18" lean-forward="false" selection-start-line="264" selection-start-column="18" selection-end-line="264" selection-end-column="18" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

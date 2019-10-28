@@ -115,37 +115,31 @@ $ php artisan serve
     **input text** : `price` <br>
     
 * **EXCLUIR UM PASTEL**<br>
-    **method** : `POST`<br>
-    **body** : `form-data`<br>
+    **method** : `DELETE`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
     **parameter** : `id, slug ou código do pastel.`<br>    
     **url** : `http://localhost:8000/api/products/parameter` <br>
-    **_method text** : `PUT` <br>
-    **input text** : `name` <br>
-    **input text** : `code` <br>
-    **input text** : `price` <br>
     
 * **RESTAURAR UM PASTEL**<br>
     **method** : `PATCH`<br>
-    **body** : `form-data`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
     **parameter** : `id, slug ou código do pastel.`<br>    
     **url** : `http://localhost:8000/api/products/parameter/restore?trashed=1` <br>
-    **_method text** : `PUT` <br>
-    **input text** : `name` <br>
-    **input text** : `code` <br>
-    **input text** : `price` <br>
     
     
 * **CONSULTAR FOTOS DE UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
     **body** : `raw -> JSON(application/json)`<br>
-    **headers**  `Content-Type: application/json`<br>
+    **headers**  `Accept: application/json`<br>
     **parameter** : `id, slug ou código do pastel.`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos`<br>
     
 * **CONSULTAR UMA FOTO ESPECÍFICA**<br>
     **method** : `GET`<br>
     **body** : `raw -> JSON(application/json)`<br>
-    **headers**  `Content-Type: application/json`<br>
+    **headers**  `Accept: application/json`<br>
     **parameter** : `id, slug ou código do pastel.`<br>
     **id** : `id da foto`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos/id`<br> 
@@ -172,7 +166,8 @@ $ php artisan serve
     
 * **REMOVER FOTO**<br>
     **method** : `DELETE`<br>
-    **body** : `form-data`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
     **parameter** : `id, slug ou código do pastel.`<br>
     **id** : `id da foto`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos/id`<br>
@@ -185,6 +180,9 @@ $ php artisan serve
 ## Módulo Cliente<br>
 * **LISTAR OS CLIENTES**<br>
     **method** : `GET`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
+    **headers**  `Content-Type: application/json`<br>
     **url** : `http://localhost:8000/api/customers`<br>
     **paginate** : `http://localhost:8000/api/customers?page=2` <br>
     **per page** : `5`
@@ -193,6 +191,7 @@ $ php artisan serve
     **method** : `POST`<br>
     **url** : `http://localhost:8000/api/customers` <br>
     **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
     **headers**  `Content-Type: application/json`<br>
     **Execultar com os atributos abaixo** : 
 ````
@@ -210,6 +209,8 @@ $ php artisan serve
 ````
 * **CONSULTAR UM CILENTE ESPECÍFICO**<br>
     **method** : `GET`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
     **parameter** : `código ou id.`<br>
     **url** : `http://localhost:8000/api/customers/codigo`<br>
     **excluidos** : `http://localhost:8000/api/customers/parameter?trashed=1`<br>
@@ -219,7 +220,7 @@ $ php artisan serve
     **parameter** : `código ou id.`<br>
     **url** : `http://localhost:8000/api/customers/parameter` <br>
     **body** : `raw -> JSON(application/json)`<br>
-    **headers**  `Content-Type: application/json`<br>
+    **headers**  `Accept: application/json`<br>
     **Execultar com os atributos abaixo** : 
 ````
     {   
@@ -240,7 +241,7 @@ $ php artisan serve
     **parameter** : `código ou id.`<br>
     **url** : `http://localhost:8000/api/customers/parameter` <br>
     **body** : `raw -> JSON(application/json)`<br>
-    **headers**  `Content-Type: application/json`<br> 
+    **headers**  `Accept: application/json`<br> 
     
     
 * **RESTAURAR UM CILENTE**<br>
@@ -248,12 +249,29 @@ $ php artisan serve
     **parameter** : `código ou id.`<br>
     **url** : `http://localhost:8000/api/customers/parameter/restore?trashed=1` <br>
     **body** : `raw -> JSON(application/json)`<br>
-    **headers**  `Content-Type: application/json`<br>
+    **headers**  `Accept: application/json`<br>
     
     
 <div id='orders'/>
 
 ## Módulo Pedido<br>
+
+* **LISTAR PEDIDOS**<br>
+    **method** : `GET`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br> 
+    **url** : `http://localhost:8000/api/orders`<br>
+    **paginate** : `http://localhost:8000/api/orders?page=2` <br>
+    **per page** : `5`
+    
+* **CONSULTAR UM PEDIDO**<br>
+    **method** : `GET`<br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br> 
+    **parameter** : `código ou id.`<br>
+    **url** : `http://localhost:8000/api/orders/parameter`<br>
+    **paginate** : `http://localhost:8000/api/orders/parameter?page=2` <br>
+    **per page** : `5`
 
 
 ## Instalação: Docker (NGINX)<br>

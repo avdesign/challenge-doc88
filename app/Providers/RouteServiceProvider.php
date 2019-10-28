@@ -36,16 +36,12 @@ class RouteServiceProvider extends ServiceProvider
 
         // Consultar Cliente pelo id ou pelo código.
         Route::bind('customer', function($value){
-
             $query = Customer::query();
             $request = app(Request::class);
             $query = $this->onlyTrashedIfRequested($request, $query);
-
             /** @var Collection $collection */
             $collection = $query->whereId($value)->orWhere('code', $value)->get();
             return $collection->first();
-
-
         });
 
         // Consultar Produto pelo id, código ou slug.
