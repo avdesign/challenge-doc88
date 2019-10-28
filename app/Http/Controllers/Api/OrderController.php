@@ -54,8 +54,9 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $this->interModel->rules($request, $this->messages);
+        $order = $this->interModel->create($request->all());
 
-
+        return new OrderResource($order);
     }
 
     /**

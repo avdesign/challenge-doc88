@@ -55,7 +55,7 @@ trait ExceptionTrait
     protected function QueryResponse($e)
     {
         return response()->json([
-            'errors' => 'Incorect Query'
+            'errors' => 'Incorect Query '.$e,
         ],Response::HTTP_NOT_FOUND);
     }
 

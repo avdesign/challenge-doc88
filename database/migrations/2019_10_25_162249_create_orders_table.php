@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('customer_id')->unsigned();
-            $table->bigInteger('reference')->unique();
+            $table->string('reference', 30)->unique();
             $table->integer('amount');
             $table->decimal('price', 8, 2);
             $table->decimal('total', 8, 2);
