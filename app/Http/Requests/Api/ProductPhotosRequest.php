@@ -40,20 +40,27 @@ class ProductPhotosRequest extends FormRequest
     private function rulesUpdate()
     {
         return [
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:' . (3 * 1024)
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:' . (3 * 1024),
+            //'cover' => 'required'
         ];
     }
-
 
 
     public function messages()
     {
         return [
-            'photos.required' => 'O campo Fotos é obrigatório',
+            'photos.required' => 'A foto é obrigatória',
             'photos.array' => 'O campo file photos tem que ser com anotações de array.Ex:photos[]',
             'photos.image' => 'O campo Fotos deverá conter uma imagem.',
             'photos.mimes' => 'O campo Fotos deverá conter um arquivo do tipo: jpeg,png,jpg,gif,svg',
             'photos.max' => 'O campo Fotos deverá ter o tamanho de 3 megas',
+
+            'photo.required' => 'A foto é obrigatória',
+            'photo.image' => 'O campo Fotos deverá conter uma imagem.',
+            'photo.mimes' => 'O campo Fotos deverá conter um arquivo do tipo: jpeg,png,jpg,gif,svg',
+            'photo.max' => 'O campo Fotos deverá ter o tamanho de 3 megas',
+
+            //'cover' => 'Defina se a foto é capa ou não.'
         ];
     }
 }

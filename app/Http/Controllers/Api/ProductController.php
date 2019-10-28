@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Product;
+use App\Models\ProductPhoto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ProductRequest;
 use App\Http\Resources\Api\ProductResource;
@@ -23,9 +24,9 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $product = Product::create($request->all());
+        $product = Product::createWithPhoto($request->all());
         $product->refresh();
-        return $product;
+        return new ProductResource($product);
     }
 
     public function show(Product $product)
@@ -44,7 +45,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return response(['success' => true, 'message' => 'Excluido'], 204);
+        return response([], 204);
     }
 
     /**

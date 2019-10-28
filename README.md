@@ -84,6 +84,15 @@ $ php artisan serve
 <div id='products'/>
 
 ## Módulo Pastel<br>
+* **ADICIONAR PASTEL**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **url** : `http://localhost:8000/api/products`<br>
+    **input text** : `name` <br>
+    **input text** : `code` <br>
+    **input text** : `price` <br>
+    **input file** : `photo` <br>    
+    
 * **LISTAR OS PASTEIS**<br>
     **method** : `GET`<br>
     **url** : `http://localhost:8000/api/products`<br>
@@ -92,42 +101,83 @@ $ php artisan serve
     
 * **CONSULTAR UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameters** : `id, slug ou código.`<br>
+    **parameter** : `id, slug ou código.`<br>
     **url** : `http://localhost:8000/api/products/parameter`
     
-* **CONSULTAR UM PASTEL ESPECÍFICO**<br>
-    **method** : `GET`<br>
-    **body** : `raw -> JSON(application/json)`<br>
-    **headers**  `Content-Type: application/json`<br>
-    **parameters** : `id, slug ou código do pastel.`<br>
-    **url** : `http://localhost:8000/api/products/parameter` 
+* **EDITAR UM PASTEL ESPECÍFICO**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>    
+    **url** : `http://localhost:8000/api/products/parameter` <br>
+    **_method text** : `PUT` <br>
+    **input text** : `name` <br>
+    **input text** : `code` <br>
+    **input text** : `price` <br>
+    
+* **EXCLUIR UM PASTEL**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>    
+    **url** : `http://localhost:8000/api/products/parameter` <br>
+    **_method text** : `PUT` <br>
+    **input text** : `name` <br>
+    **input text** : `code` <br>
+    **input text** : `price` <br>
+    
+* **RESTAURAR UM PASTEL**<br>
+    **method** : `PATCH`<br>
+    **body** : `form-data`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>    
+    **url** : `http://localhost:8000/api/products/parameter/restore?trashed=1` <br>
+    **_method text** : `PUT` <br>
+    **input text** : `name` <br>
+    **input text** : `code` <br>
+    **input text** : `price` <br>
+    
     
 * **CONSULTAR FOTOS DE UM PASTEL ESPECÍFICO**<br>
     **method** : `GET`<br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br>
-    **parameters** : `id, slug ou código do pastel.`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos`<br>
     
 * **CONSULTAR UMA FOTO ESPECÍFICA**<br>
     **method** : `GET`<br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br>
-    **parameters** : `id, slug ou código do pastel.`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>
     **id** : `id da foto`<br>
     **url** : `http://localhost:8000/api/products/parameter/photos/id`<br> 
     **return** : `Dados da foto e do pastel`<br> 
     
-* **UPLOAD DAS FOTOS DE UM PASTEL ESPECÍFICO**<br>
+* **UPLOAD DAS FOTOS (MULTIPLE)**<br>
     **method** : `POST`<br>
     **body** : `form-data`<br>
-    **parameters** : `id, slug ou código do pastel.`<br>
-    **url** : `http://localhost:8000/api/products/parameter/photos`<br> 
-    **key** : `photos[]`<br> 
-    **type** : `files`<br> 
-         
-         
- **Obs** : `Para ter acesso as fotos, não esquecer do camando:  php artisan storage:link `<br>     
+    **parameter** : `id, slug ou código do pastel.`<br>
+    **url** : `http://localhost:8000/api/products/parameter/photos`<br>
+    **input file** : `photos[]` <br>
+    **input file** : `photos[] -> adicione quantas fotos quiser` <br>
+    
+    
+* **ALTERAR FOTO**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>
+    **id** : `id da foto`<br>
+    **url** : `http://localhost:8000/api/products/parameter/photos/id`<br>
+    **input file** : `photo` <br>
+    **_method text** : `PUT` <br>
+    **cover text** : `1 -> Foto capa` <br>
+    
+* **REMOVER FOTO**<br>
+    **method** : `DELETE`<br>
+    **body** : `form-data`<br>
+    **parameter** : `id, slug ou código do pastel.`<br>
+    **id** : `id da foto`<br>
+    **url** : `http://localhost:8000/api/products/parameter/photos/id`<br>
+    
+ **Obs** : `Para ter acesso as fotos não esquecer do camando:  php artisan storage:link `<br>     
       
     
 <div id='customer'/>
@@ -160,9 +210,9 @@ $ php artisan serve
 ````
 * **CONSULTAR UM CILENTE ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameters** : `códig ou id.`<br>
-    **url** : `http://localhost:8000/api/customers/codigo`
-    **excluidos** : `http://localhost:8000/api/customers/codigo?trashed=1`
+    **parameter** : `códig ou id.`<br>
+    **url** : `http://localhost:8000/api/customers/codigo`<br>
+    **excluidos** : `http://localhost:8000/api/customers/codigo?trashed=1`<br>
 
 * **ALTEAR CLIENTE (JSON)**<br>
     **method** : `PUT`<br>
@@ -190,9 +240,10 @@ $ php artisan serve
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br> 
     
-* **RESTAURAR UM CILENTE ESPECÍFICO**<br>
+    
+* **RESTAURAR UM CILENTE**<br>
     **method** : `PATCH`<br>
-    **url** : `http://localhost:8000/api/customers/code` <br>
+    **url** : `http://localhost:8000/api/customers/code/restore?trashed=1` <br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br>
     

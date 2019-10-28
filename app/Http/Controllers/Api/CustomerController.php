@@ -95,7 +95,7 @@ class CustomersController extends Controller
     {
         $customer->restore();
 
-        return new ProductResource($customer);
+        return new CustomersResource($customer);
     }
 
 

@@ -5,22 +5,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 
 class ProductPhoto extends Model
 {
     /**
-     *
+     * Para ficar fácil de manipular os diretórios e pastas vamos separar assim:
      */
     const BASE_PATH = 'app/public';
     const DIR_PRODUCTS = 'products';
     const PRODUCTS_PATH = self::BASE_PATH . '/' . self::DIR_PRODUCTS;
 
-    protected $fillable = ['file_name','product_id'];
+    protected $fillable = ['file_name', 'product_id', 'cover'];
 
 
     /**
      * Uploading multiple files
-     * Fazer a criação com os files retornando uma Collection do Eloquent.     *
+     * Fazer a criação com os files retornando uma Collection do Eloquent.
+     * Se algo der errado remove as fotos
      *
      * @param int $productId
      * @param array $files
@@ -34,18 +36,138 @@ class ProductPhoto extends Model
             self::uploadFiles($productId, $files);
             \DB::beginTransaction();
             $photos = self::createPhotosModels($productId, $files);
-            //throw new \Exception('Iniciando exceção!');
+            //throw new \Exception('TestErrorUpload');
             \DB::commit();
             return new Collection($photos);
 
         }catch(\Exception $e){
             self::deleteFiles($productId, $files);
             \DB::rollBack();
+            throw new \Exception('ErrorCreate: ProductPhoto', 400);
+        }
+    }
+
+
+    /**
+     * Alterar a foto de um produto específico
+     *
+     * @param $product
+     * @param array $data
+     * @return ProductPhoto
+     * @throws \Exception
+     */
+    public function updateWithPhoto($product, array $data): ProductPhoto
+    {
+        try {
+            $this->checkCover($product, $data['cover']);
+            if (isset($data['photo'])) {
+                self::uploadPhoto($this->product_id, $data['photo']);
+                $data['file_name'] = $data['photo']->hashName();
+                /* Fazer backoup da foto atual
+                 * $previous = self::photosPath("{$this->product_id}/{$this->photo}");
+                 * $tmp = \File::copy(sys_get_temp_dir(), $previous);
+                */
+            } else {
+                $data['file_name'] = $this->photo;
+            }
+            $data['product_id'] = $this->product_id;
+
+            \DB::beginTransaction();
+            $this->deletePhoto($this->file_name);
+            $this->fill($data)->save();
+            return $this;
+            \DB::commit();
+        } catch (\Exception $e) {
+            if (isset($data['photo'])) {
+                $this->deletePhoto($data['photo']);
+            }
+            \DB::rollBack();
+            // Recuperar backoup da foto atual
+            throw new \Exception("UpdatePhoto: {$e}", 400);
+        }
+    }
+
+    public function deleteWithPhoto($product): bool
+    {
+        try {
+            \DB::beginTransaction();
+            /* Fazer backoup da foto atual
+             * $previous = self::photosPath("{$this->product_id}/{$this->photo}");
+             * $tmp = \File::copy(sys_get_temp_dir(), $previous);
+            */
+            $this->deletePhoto($this->file_name);
+            $result = $this->delete();
+            \DB::commit();
+            return $result;
+        } catch (\Exception $e) {
+            \DB::rollBack();
             throw $e;
         }
     }
 
     /**
+     * Verifica se já existe uma imagem capa ou se precisa alterar o status.
+     *
+     * @param $product
+     * @param $status
+     */
+    private function checkCover($product, $cover)
+    {
+        $photos = collect($product->photos);
+        $current = $this;
+        if ($cover == 1) {
+            $photos->each(function ($photo) use($current) {
+                $current->id == $photo->id ? $photo->cover = 1 : $photo->cover = 0;
+                $photo->save();
+            });
+        } elseif ($current->cover == 1) {
+            $photos->map(function ($photo, $key) {
+                if ($key == 0) {
+                    $photo->cover = 1;
+                    $photo->save();
+                }
+            });
+        }
+    }
+
+
+    /**
+     * Fazer upload da foto
+     *
+     * @param $productId
+     * @param UploadedFile $photo
+     */
+    private static function uploadPhoto($productId, UploadedFile $photo)
+    {
+        $dir = self::photosDir($productId);
+        // Verificar se o driver está no clud ou local
+        $filesystemDriver = env('FILESYSTEM_DRIVER', 'local');
+        if ($filesystemDriver == 'local') {
+            $photo->store($dir, ['disk' => 'public']);
+        } else {
+            $photo->store($dir, ['disk' => env('FILESYSTEM_DRIVER')]);
+        }
+    }
+
+
+
+    private function deletePhoto($file_name){
+        $dir = self::photosDir($this->product_id);
+        // Verificar se o driver está no clud ou local
+        $filesystemDriver = env('FILESYSTEM_DRIVER', 'local');
+        if ($filesystemDriver == 'local') {
+            \Storage::disk('public')->delete("{$dir}/{$file_name}");
+        } else {
+            \Storage::disk(env('FILESYSTEM_DRIVER'))->delete("{$dir}/{$file_name}");
+        }
+
+    }
+
+
+
+    /**
+     * Remover todas a fotos de um produto específico.
+     *
      * @param int $productId
      * @param array $files
      */

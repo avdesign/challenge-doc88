@@ -29,13 +29,14 @@ class ProductPhotoController extends Controller
     /**
      * Upload das fotos de um produto específico.
      *
-     *
      * @param ProductPhotosRequest $request
      * @param Product $product
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(ProductPhotosRequest $request, Product $product)
     {
         $photos = ProductPhoto::createWithPhotosFiles($product->id, $request->photos);
+        return response()->json(new ProductPhotoCollection($photos, $product), 201);
     }
 
     /**
@@ -47,31 +48,49 @@ class ProductPhotoController extends Controller
      */
     public function show(Product $product, ProductPhoto $photo)
     {
+        $this->assertProductPhoto($product, $photo);
+
         return new ProductPhotoResource($photo);
     }
 
-
-
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProductPhoto  $productPhoto
-     * @return \Illuminate\Http\Response
+     * @param ProductPhotosRequest $request
+     * @param Product $product
+     * @param ProductPhoto $photo
      */
-    public function update(Request $request, ProductPhoto $productPhoto)
+    public function update(ProductPhotosRequest $request, Product $product, ProductPhoto $photo)
     {
-        //
+        $this->assertProductPhoto($product, $photo);
+        $photo = $photo->updateWithPhoto($product, $request->all());
+        return new ProductPhotoResource($photo);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remover uma foto específica
      *
      * @param  \App\Models\ProductPhoto  $productPhoto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductPhoto $productPhoto)
+    public function destroy(Product $product, ProductPhoto $photo)
     {
-        //
+        $this->assertProductPhoto($product, $photo);
+        $photo->deleteWithPhoto($product);
+
+        return response()->json([], 204);
+    }
+
+
+    /**
+     * Verifica se o id do product passado esta reacionado com a foto.
+     *
+     * @param Product $product
+     * @param ProductPhoto $photo
+     * @return void
+     */
+    private function assertProductPhoto(Product $product, ProductPhoto $photo): void
+    {
+        if ($photo->product_id != $product->id) {
+            abort(404);
+        }
     }
 }
