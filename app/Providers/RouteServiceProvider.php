@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Traits\OnlyTrashed;
@@ -33,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        // Consultar Cliente pelo id ou pelo código
+        // Consultar Cliente pelo id ou pelo código.
         Route::bind('customer', function($value){
 
             $query = Customer::query();
@@ -47,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
 
         });
 
-        // Consultar Product pelo id ou pelo slug
+        // Consultar Produto pelo id, código ou slug.
         Route::bind('product', function($value){
             $query = Product::query();
             $request = app(Request::class);
@@ -56,6 +57,18 @@ class RouteServiceProvider extends ServiceProvider
             $collection = $query->whereId($value)->orWhere('code', $value)->orWhere('slug', $value)->get();
             return $collection->first();
         });
+
+
+        // Consultar Pedido pelo id ou pelo codigo
+        Route::bind('order', function($value){
+            $query = Order::query();
+            $request = app(Request::class);
+            $query = $this->onlyTrashedIfRequested($request, $query);
+            /** @var Collection $collection */
+            $collection = $query->whereId($value)->orWhere('reference', $value)->get();
+            return $collection->first();
+        });
+
 
 
     }

@@ -15,7 +15,6 @@ class OrderResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
             'numero' => $this->reference,
             'pasteis' => new ProductResource($this->product),
             'quantidade' => (int)$this->amount,
