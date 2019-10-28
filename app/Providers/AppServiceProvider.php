@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
 
         //Adicione quantos quiser no array.
         $models = array(
-            'OrderInterface'
+            'Order'
         );
 
         //Faz o loop para adicionar a Interface e o Repository do Model

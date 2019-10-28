@@ -40,9 +40,9 @@ class OrderRepository implements OrderInterface
         $this->validate($input, $this->model->rules($id), $messages);
     }
 
-    public function getAll()
+    public function getAll($perPage)
     {
-        $data  = $this->model->where('admin_id', $id)->get();
+        $data  = $this->model->with('customer', 'product')->paginate($perPage);
         return $data;
     }
 

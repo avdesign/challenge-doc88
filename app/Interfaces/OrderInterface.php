@@ -9,7 +9,7 @@ interface OrderInterface
      *
      * @return \App\Repositories\OrderRepository
      */
-    public function getAll();
+    public function getAll($perPage);
     public function create($input);
 
 }

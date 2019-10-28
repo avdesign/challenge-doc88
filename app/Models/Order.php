@@ -21,9 +21,9 @@ class Order extends Model
     public function rules()
     {
         return [
-            'product_id' => "required|numeric",
-            'customer_id' => "required|numeric",
-            'amount'      => "required|numeric"
+            'product'  => "required|numeric",
+            'customer' => "required|numeric",
+            'amount'   => "required|numeric"
         ];
     }
 
