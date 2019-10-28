@@ -16,7 +16,7 @@ class Order extends Model
 
 
     /**
-     * Criar Pedido
+     * Criar Pedido Faker
      *
      * @param array $data
      */

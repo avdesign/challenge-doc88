@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
+
 use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\OrderResource;
-
-use Illuminate\Http\Request;
-
-
 
 class OrderController extends Controller
 {

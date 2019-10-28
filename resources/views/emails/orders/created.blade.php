@@ -1,5 +1,7 @@
 @component('mail::message')
-# Seu pedido no {{ config('app.name') }} foi criado com sucesso
+# Olá {{$order->customer->name}}
+
+Seu pedido no {{ config('app.name') }} foi criado com sucesso
 
 Valor total: **R$ {{number_format($order->total,2,',','.')}}**
 
