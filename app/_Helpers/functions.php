@@ -48,6 +48,22 @@ if (! function_exists('cellNumbers')) {
 
 
 /**
+ * Gerar códigos aleatórios
+ *
+ */
+if (! function_exists('createCode')) {
+    function createCode(){
+        $n1 = rand() % 9000 + 1000;
+        $n2 = rand() % 9000 + 1000;
+        $code = date('Ymd')."{$n1}{$n2}";
+
+        return $code;
+    }
+}
+
+
+
+/**
  * Retorna só número de uma string;
  */
 if ( !function_exists('returnNumber'))

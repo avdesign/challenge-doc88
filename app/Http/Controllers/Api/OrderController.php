@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Order;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\OrderResource;
 
 use Illuminate\Http\Request;
 
@@ -11,25 +12,18 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    private $perPage=5;
     /**
-     * Display a listing of the resource.
+     * Lista os pedidos com os relacionamentos já carregados com uma consula só.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $orders = Order::with('customer', 'product')->paginate($this->perPage);
+        return OrderResource::collection($orders);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,19 +44,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return new OrderResource($order);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
