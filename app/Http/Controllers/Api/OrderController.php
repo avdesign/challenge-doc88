@@ -5,12 +5,25 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\Models\Order;
+use App\Interfaces\OrderInterface as Model;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\OrderResource;
 
 class OrderController extends Controller
 {
     private $perPage=5;
+    /**
+     * @var Model
+     */
+    private $model;
+
+
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
+
     /**
      * Lista os pedidos com os relacionamentos já carregados com uma consula só.
      *

@@ -16,6 +16,19 @@ class Order extends Model
 
 
     /**
+     * Validate
+     **/
+    public function rules()
+    {
+        return [
+            'product_id' => "required|numeric",
+            'customer_id' => "required|numeric",
+            'amount'      => "required|numeric"
+        ];
+    }
+
+
+    /**
      * Criar Pedido Faker
      *
      * @param array $data
