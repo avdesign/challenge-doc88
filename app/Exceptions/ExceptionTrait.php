@@ -1,12 +1,12 @@
 <?php
 namespace App\Exceptions;
 
+use Whoops\Exception\ErrorException;
 use Illuminate\Database\QueryException;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-
 
 trait ExceptionTrait
 {
@@ -26,6 +26,10 @@ trait ExceptionTrait
 
         if ($this->isHttp($e)) {
             return $this->HttpResponse($e);
+        }
+
+        if ($this->isError($e)) {
+            return $this->ErrorResponse($e);
         }
 
         return parent::render($request, $e);
@@ -51,6 +55,12 @@ trait ExceptionTrait
     {
         return $e instanceof NotFoundHttpException;
     }
+
+    protected function isError($e)
+    {
+        return $e instanceof ErrorResponse;
+    }
+
 
     protected function QueryResponse($e)
     {
@@ -78,6 +88,13 @@ trait ExceptionTrait
         return response()->json([
             'errors' => 'Not Found'
         ],Response::HTTP_NOT_FOUND);
+    }
+
+    protected function ErrorResponse($e)
+    {
+        return response()->json([
+            'errors' => 'HTTP Iinternal server error'
+        ],Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
 }

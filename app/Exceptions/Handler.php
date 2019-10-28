@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use App\Exceptions\ExceptionTrait;
+
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 

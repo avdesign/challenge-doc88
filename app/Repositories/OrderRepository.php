@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 
+use App\Http\Resources\Api\OrderResource;
 use App\Models\Order as Model;
 use App\Models\Product;
 use App\Models\Customer;
@@ -52,9 +53,27 @@ class OrderRepository implements OrderInterface
         $this->validate($input, $this->model->rules($id), $messages);
     }
 
+    /**
+     * Retorna todos od pedidos
+     *
+     * @param $perPage
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getAll($perPage)
     {
-         return Model::with('customer', 'product')->paginate($perPage);
+        $orders =  $this->model->with('customer', 'product')->paginate($perPage);
+
+        return OrderResource::collection($orders);
+    }
+
+
+    public function setOrder($order)
+    {
+        $order = $this->model->find($order->id);
+        if ($order) {
+            return new OrderResource($order);
+        }
+
     }
 
 
@@ -67,9 +86,14 @@ class OrderRepository implements OrderInterface
     public function create($input)
     {
         $product  = $this->product->whereId($input['product'])->orWhere('code', $input['product'])->first();
+        if (empty($product)) {
+            return response()->json(['Error' => 'Não existe este produto no sistema.'], 400)->content();
+        }
         // Se for um usuário autenticado basta: auth()->id();
         $customer = $this->customer->whereId($input['customer'])->orWhere('code', $input['customer'])->first();
-
+        if (empty($customer)) {
+            return response()->json('Não existe este cliente no sistema.', 400)->content();
+        }
         // Código único da order
         $code = uniqid(date('YmdHis'));
         $data['reference'] = returnNumber($code);
@@ -79,8 +103,72 @@ class OrderRepository implements OrderInterface
         $data['product_id']  = $product->id;
         $data['customer_id'] = $customer->id;
 
-        return  $this->model->create($data);
+        $order = $this->model->create($data);
+        if ($order) {
+            return new OrderResource($order);
+        } else {
+            $json = $this->responseOrder('Error', 404);
+        }
 
     }
+
+
+    /**
+     * Update
+     *
+     * @param $order
+     * @param $input
+     * @return mixed
+     */
+    public function update($order, $input)
+    {
+        $product  = $this->product->whereId($input['product'])->orWhere('code', $input['product'])->first();
+        if (empty($product)) {
+            return response()->json(['Error' => 'Não existe este produto no sistema.'], 400)->content();
+        }
+        // Se for um usuário autenticado basta: auth()->id();
+        $customer = $this->customer->whereId($input['customer'])->orWhere('code', $input['customer'])->first();
+        if (empty($customer)) {
+            return response()->json('Não existe este cliente no sistema.', 400)->content();
+        }
+
+        $order->product_id  = $product->id;
+        $order->customer_id = $customer->id;
+        $order->amount = $input['amount'];
+        $order->price = $product->price;
+        $order->total = $product->price * $input['amount'];
+        $order->save();
+
+        return new OrderResource($order);
+
+    }
+
+
+
+
+    public function delete($order)
+    {
+        $delete = $order->delete();
+        if ($delete) {
+            $json = $this->responseOrder('A ordem foi excluida com sucesso!', 204);
+        } else {
+            $json = $this->responseOrder('Error', 404);
+        }
+    }
+
+
+    public function restore($order)
+    {
+        $order->restore();
+
+        return new CustomersResource($order);
+    }
+
+    private function responseOrder($msg, $sta)
+    {
+        return response()->json($msg, $sta)->content();
+
+    }
+
 
 }

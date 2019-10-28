@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
-use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\OrderResource;
 use App\Interfaces\OrderInterface as InterModel;
@@ -40,8 +39,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->interModel->getAll($this->perPage);
-        return OrderResource::collection($orders);
+        return $this->interModel->getAll($this->perPage);
     }
 
 
@@ -54,9 +52,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $this->interModel->rules($request, $this->messages);
-        $order = $this->interModel->create($request->all());
-
-        return new OrderResource($order);
+        return $this->interModel->create($request->all());
     }
 
     /**
@@ -65,11 +61,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($order)
     {
         return new OrderResource($order);
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -78,25 +73,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $order)
     {
         $this->interModel->rules($request, $this->messages);
 
-
-        /*
-        $this->validate($request, [
-            'status' => [
-                'nullable',
-                'in:' .Order::STATUS_APPROVED.','. Order::STATUS_CANCELLED.','.Order::STATUS_SENT,
-                new OrderStatusChange($order->status)
-            ],
-            'payment_link' => [
-                'nullable',
-                'url',
-                new OrderPaymentLinkChange($order->status)
-            ]
-        ]);
-        */
+        return $this->interModel->update($order, $request->all());
     }
 
     /**
@@ -105,8 +86,19 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($order)
     {
-        //
+        return $this->interModel->delete($order);
+    }
+
+
+
+    /**
+     * @param Customer $customer
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function restore($order)
+    {
+        return $this->interModel->restore($order);
     }
 }
