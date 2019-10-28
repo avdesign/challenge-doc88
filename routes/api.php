@@ -15,7 +15,7 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
     Route::resource('customers', 'CustomersController', ['except' => ['create', 'edit']]);
 
     Route::patch('customers/{order}/restore', 'OrderController@restore');
-    Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
+    Route::resource('orders', 'OrderController', ['except' => ['create', 'edit', 'update']]);
 
 });
 

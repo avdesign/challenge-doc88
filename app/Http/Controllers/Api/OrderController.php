@@ -57,7 +57,20 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        /*
+        $this->validate($request, [
+            'status' => [
+                'nullable',
+                'in:' .Order::STATUS_APPROVED.','. Order::STATUS_CANCELLED.','.Order::STATUS_SENT,
+                new OrderStatusChange($order->status)
+            ],
+            'payment_link' => [
+                'nullable',
+                'url',
+                new OrderPaymentLinkChange($order->status)
+            ]
+        ]);
+        */
     }
 
     /**
