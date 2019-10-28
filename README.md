@@ -210,13 +210,14 @@ $ php artisan serve
 ````
 * **CONSULTAR UM CILENTE ESPECÍFICO**<br>
     **method** : `GET`<br>
-    **parameter** : `códig ou id.`<br>
+    **parameter** : `código ou id.`<br>
     **url** : `http://localhost:8000/api/customers/codigo`<br>
-    **excluidos** : `http://localhost:8000/api/customers/codigo?trashed=1`<br>
+    **excluidos** : `http://localhost:8000/api/customers/parameter?trashed=1`<br>
 
 * **ALTEAR CLIENTE (JSON)**<br>
     **method** : `PUT`<br>
-    **url** : `http://localhost:8000/api/customers/code` <br>
+    **parameter** : `código ou id.`<br>
+    **url** : `http://localhost:8000/api/customers/parameter` <br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br>
     **Execultar com os atributos abaixo** : 
@@ -235,15 +236,17 @@ $ php artisan serve
     }
 ````  
 * **EXCLUSÃO DO CLIENTE**<br>
-    **method** : `PATCH`<br>
-    **url** : `http://localhost:8000/api/customers/code` <br>
+    **method** : `DELETE`<br>
+    **parameter** : `código ou id.`<br>
+    **url** : `http://localhost:8000/api/customers/parameter` <br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br> 
     
     
 * **RESTAURAR UM CILENTE**<br>
     **method** : `PATCH`<br>
-    **url** : `http://localhost:8000/api/customers/code/restore?trashed=1` <br>
+    **parameter** : `código ou id.`<br>
+    **url** : `http://localhost:8000/api/customers/parameter/restore?trashed=1` <br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Content-Type: application/json`<br>
     
