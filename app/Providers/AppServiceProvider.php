@@ -15,8 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Enviar email para o cliene (created e updated).
-        Order::observe(OrderObserver::class);
 
         //Adicione quantos quiser no array.
         $models = array(
@@ -32,11 +30,14 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Enviar email para o cliene (created e updated).
      *
      * @return void
      */
     public function boot()
     {
+        //
+        Order::observe(OrderObserver::class);
+
     }
 }

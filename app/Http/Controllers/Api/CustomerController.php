@@ -6,7 +6,8 @@ use App\Models\Customer;
 use App\Traits\OnlyTrashed;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CustomerRequest;
-use App\Http\Resources\Api\CustomersResource;
+use App\Http\Resources\Api\CustomerResource;
+use App\Http\Resources\Api\CustomerOrdersCollection;
 
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class CustomersController extends Controller
         $query = $this->onlyTrashedIfRequested($request, $query);
         $customers = $query->paginate($this->perPage);
 
-        return CustomersResource::collection($customers);
+        return CustomerResource::collection($customers);
     }
 
 
@@ -47,7 +48,7 @@ class CustomersController extends Controller
         $dataJson['code'] = returnNumber($code);
 
         $customer = Customer::create($dataJson);
-        return new CustomersResource($customer);
+        return new CustomerResource($customer);
     }
 
     /**
@@ -58,7 +59,7 @@ class CustomersController extends Controller
      */
     public function show(Customer $customer)
     {
-        return new CustomersResource($customer);
+        return new CustomerResource($customer);
     }
 
 
@@ -87,6 +88,12 @@ class CustomersController extends Controller
     }
 
 
+    public function orders(Customer $customer)
+    {
+        return new CustomerOrdersCollection($customer->orders, $customer);
+    }
+
+
     /**
      * @param Customer $customer
      * @return \Illuminate\Http\JsonResponse
@@ -95,7 +102,7 @@ class CustomersController extends Controller
     {
         $customer->restore();
 
-        return new CustomersResource($customer);
+        return new CustomerResource($customer);
     }
 
 

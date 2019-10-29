@@ -9,8 +9,9 @@
 2. [Instalação](#install)
 3. [Módulo Pastel](#products)
 4. [Módulo Cliente](#customer)
-3. [Módulo Pedido](#orders)
-
+5. [Módulo Pedido](#orders)
+6. [Disparo de E-mails](#mails)
+7. [Relatórios](#reports)
 *******
 <div id='about'/>
 
@@ -268,11 +269,77 @@ $ php artisan serve
     **method** : `GET`<br>
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Accept: application/json`<br> 
-    **parameter** : `código ou id.`<br>
+    **parameter** : `código`<br>
     **url** : `http://localhost:8000/api/orders/parameter`<br>
-    **paginate** : `http://localhost:8000/api/orders/parameter?page=2` <br>
-    **per page** : `5`
+    **excluidos** : `http://localhost:8000/api/orders/parameter?trashed=1`<br>
 
+* **ADICIONAR UM PEDIDO**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **headers**  `Accept: application/json`<br>
+    **url** : `http://localhost:8000/api/orders`<br>
+    **product** : `Código do Pastel` <br>
+    **customer** : `Código do cliente` <br>
+    **amount** : `Quantidade` <br>
+    
+* **ALTERAR PEDIDO**<br>
+    **method** : `POST`<br>
+    **body** : `form-data`<br>
+    **headers**  `Accept: application/json`<br>
+    **parameter** : `código ou id`<br>
+    **url** : `http://localhost:8000/api/orders/codigo`<br>
+    **product** : `Código do Pastel` <br>
+    **customer** : `Código do cliente` <br>
+    **amount** : `Quantidade` <br>    
+    **_method** : `PUT` <br>
+        
+* **EXCLUIR PEDIDO**<br>
+    **method** : `DELETE`<br>
+    **body** : `form-data`<br>
+    **headers**  `Accept: application/json`<br>
+    **parameter** : `código ou id`<br>
+    **url** : `http://localhost:8000/api/orders/codigo/`<br>
+    
+* **REATIVAR EXCLUIDO**<br>
+    **method** : `PATCH`<br>
+    **body** : `form-data`<br>
+    **headers**  `Accept: application/json`<br>
+    **parameter** : `código ou id`<br>
+    **url** : `http://localhost:8000/api/orders/codigo/restore?trashed=1`<br>
+    
+    
+<div id='reports'/>
+
+## Relatórios<br>
+
+* **PEDIDOS DE UM PASTEL ESPECÍFICO**<br>
+    **method** : `GET`<br>
+    **parameter** : `slug, código ou id.`<br>
+    **url** : `http://localhost:8000/api/products/parameter/orders` <br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
+    
+* **PEDIDOS DE UM CLIENTE ESPECÍFICO**<br>
+    **method** : `GET`<br>
+    **parameter** : `slug, código ou id.`<br>
+    **url** : `http://localhost:8000/api/customers/parameter/orders` <br>
+    **body** : `raw -> JSON(application/json)`<br>
+    **headers**  `Accept: application/json`<br>
+        
+<div id='mails'/>  
+## Disparo de E-mails      
+* Foi criado Observers (created/updated), se a demanda fosse grande eu utilizaria as Queues do Laravel (Eventos/Filas)  e criaria um monitoramento.      
+* Para receber o emails referente ao pedido, é preciso configurar a conta do mailtrap no .env  
+```` 
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=*****
+MAIL_PASSWORD=*****
+MAIL_ENCRYPTION=****   
+   
+````
+    
 
 ## Instalação: Docker (NGINX)<br>
 * em desenvolvimento

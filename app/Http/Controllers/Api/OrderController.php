@@ -63,7 +63,7 @@ class OrderController extends Controller
      */
     public function show($order)
     {
-        return new OrderResource($order);
+        return $this->interModel->setOrder($order);
     }
 
     /**
@@ -92,9 +92,19 @@ class OrderController extends Controller
     }
 
 
+    function customerOrders($code)
+    {
+        return $this->interModel->cusomer($code);
+    }
+
+
+    function productOrders($code)
+    {
+        return $this->interModel->product($code);
+    }
 
     /**
-     * @param Customer $customer
+     * @param Order $order
      * @return \Illuminate\Http\JsonResponse
      */
     public function restore($order)

@@ -15,5 +15,7 @@ interface OrderInterface
     public function update($order, $input);
     public function delete($order);
     public function restore($order);
+    public function cusomer($code);
+    public function product($code);
 
 }

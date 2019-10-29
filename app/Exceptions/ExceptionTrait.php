@@ -79,7 +79,7 @@ trait ExceptionTrait
     protected function MethodResponse($e)
     {
         return response()->json( [
-            'errors' => 'Method is not allowed for the requested route',
+            'errors' => 'Method is not allowed for the requested route'.$e,
         ], Response::HTTP_METHOD_NOT_ALLOWED);
     }
 

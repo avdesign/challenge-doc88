@@ -87,7 +87,7 @@ class OrderRepository implements OrderInterface
     {
         $product  = $this->product->whereId($input['product'])->orWhere('code', $input['product'])->first();
         if (empty($product)) {
-            return response()->json(['Error' => 'Não existe este produto no sistema.'], 400)->content();
+            return $this->responseOrder('Não existe este produto no sistema.', 400);
         }
         // Se for um usuário autenticado basta: auth()->id();
         $customer = $this->customer->whereId($input['customer'])->orWhere('code', $input['customer'])->first();
@@ -122,14 +122,16 @@ class OrderRepository implements OrderInterface
      */
     public function update($order, $input)
     {
-        $product  = $this->product->whereId($input['product'])->orWhere('code', $input['product'])->first();
+        $product  = $this->product->whereId($input['product'])
+                                  ->orWhere('code', $input['product'])
+                                  ->first();
         if (empty($product)) {
-            return response()->json(['Error' => 'Não existe este produto no sistema.'], 400)->content();
+            return $this->responseOrder('Não existe este produto no sistema.', 400);
         }
         // Se for um usuário autenticado basta: auth()->id();
         $customer = $this->customer->whereId($input['customer'])->orWhere('code', $input['customer'])->first();
         if (empty($customer)) {
-            return response()->json('Não existe este cliente no sistema.', 400)->content();
+            return $this->responseOrder('Não existe este cliente no sistema.', 400);
         }
 
         $order->product_id  = $product->id;
@@ -157,11 +159,33 @@ class OrderRepository implements OrderInterface
     }
 
 
+    public function cusomer($code)
+    {
+        // Se for um usuário autenticado basta: auth()->id();
+        $customer = $this->customer->whereId($code)->orWhere('code', $code)->first();
+        if (empty($customer)) {
+            return $this->responseOrder('Não existe nehum pedido para este cliente.', 400);
+        }
+
+        $orders = $this->model->where('customer_id', $customer->id);
+        return $orders;
+
+    }
+
+    public function product($code)
+    {
+        $product  = $this->product->whereId($code)->orWhere('code', $code)->first();
+        if (empty($product)) {
+            return $this->responseOrder('Não tem nehum pedido com este produto', 400);
+        }
+    }
+
+
     public function restore($order)
     {
         $order->restore();
 
-        return new CustomersResource($order);
+        return new OrderResource($order);
     }
 
     private function responseOrder($msg, $sta)
