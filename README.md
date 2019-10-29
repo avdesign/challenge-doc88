@@ -16,6 +16,16 @@
 <div id='about'/>
 
 ## Sobre o projeto<br>
+* Geralmente não é uma boa prática deixar lógica de negócios na camada dos controllers, neste desafio mostra alguns exemplos de aplicação RESTFul e como deixar a lógica de negócios nos Models e nos Repositories. Tudo vai depender da complexidade do projeto, em projetos mais complexos sempre uso os Repositories, consequentemente deixo a vida dos Controllers e Models mais simples, já que eles não serão mais os responsáveis por manter essas lógicas.
+````
+-> app/Repositories
+-> app/Models
+````  
+* Partindo do princípio de que arquivos json mal formulados pode ser um desperdício de recursos, a idéia foi explorar os ResourcesJson/ResourcesCollection com os nomes dos campos que são realmente retornados aos desenvolvedores de aplicativos.
+````
+-> app/Http/Resources/Api/
+````
+
 * Foi implementado os cabeçalhos de solicitação HTTP(CORS) para não ter problemas com o "header" nas requisições do Front-end.
 ````
 -> app/Http/Middleware/CorsMiddleware.php
@@ -29,10 +39,7 @@
 -> app/Providers/RouteServiceProvider.php
 -> app/Traits/OnlyTrashed.php
 ````
-* Aqui estão os responses **ResourcesJson/ResourcesCollection**, com os nomes dos campos que são realmente retornados aos usuários do aplicativo.  
-````
--> app/Http/Resources/Api/
-````
+
 * A quantidade de fotos de cada pastel deixei como **opcional** adicionar mais de uma, sendo que a principal basta deixar o campo **capa=1**.
 * Quanto ao upload das fotos podem ser em storage diferente do sistema. 
  ````
@@ -290,7 +297,7 @@ $ php artisan serve
     **url** : `http://localhost:8000/api/orders/codigo`<br>
     **product** : `Código do Pastel` <br>
     **customer** : `Código do cliente` <br>
-    **amount** : `Quantidade` <br>    
+    **amount** : `Quantidade` <br> 
     **_method** : `PUT` <br>
         
 * **EXCLUIR PEDIDO**<br>
@@ -326,7 +333,8 @@ $ php artisan serve
     **body** : `raw -> JSON(application/json)`<br>
     **headers**  `Accept: application/json`<br>
         
-<div id='mails'/>  
+<div id='mails'/>
+  
 ## Disparo de E-mails      
 * Foi criado Observers (created/updated), se a demanda fosse grande eu utilizaria as Queues do Laravel (Eventos/Filas)  e criaria um monitoramento.      
 * Para receber o emails referente ao pedido, é preciso configurar a conta do mailtrap no .env  
@@ -338,8 +346,7 @@ MAIL_USERNAME=*****
 MAIL_PASSWORD=*****
 MAIL_ENCRYPTION=****   
    
-````
-    
+````    
 
 ## Instalação: Docker (NGINX)<br>
 * em desenvolvimento

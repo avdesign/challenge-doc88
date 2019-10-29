@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dacf9c8e-6c67-4a27-b106-0cb834fc3374" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/ExceptionTrait.php" afterPath="$PROJECT_DIR$/app/Exceptions/ExceptionTrait.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/OrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/OrderController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Resources/Api/CustomerResource.php" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/CustomerResource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Interfaces/OrderInterface.php" afterPath="$PROJECT_DIR$/app/Interfaces/OrderInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/OrderCreated.php" afterPath="$PROJECT_DIR$/app/Mail/OrderCreated.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Customer.php" afterPath="$PROJECT_DIR$/app/Models/Customer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Product.php" afterPath="$PROJECT_DIR$/app/Models/Product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Observers/OrderObserver.php" afterPath="$PROJECT_DIR$/app/Observers/OrderObserver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/mail.php" afterPath="$PROJECT_DIR$/config/mail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/OrdersTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/OrdersTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.php" afterPath="$PROJECT_DIR$/routes/api.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,47 +44,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerOrdersCollection.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="432">
+                <caret line="348" column="4" lean-forward="false" selection-start-line="348" selection-start-column="4" selection-end-line="348" selection-end-column="4" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerOrdersCollection.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/CustomerOrdersCollection.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="30" />
+              <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="57" />
               <folding>
                 <element signature="e#42#66#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Customer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Customer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="71" column="5" lean-forward="false" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductOrdersCollection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/ProductOrdersCollection.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="19" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding>
-                <element signature="e#42#65#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding>
-                <element signature="e#44#68#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,33 +73,8 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/CustomerResource.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="22" />
+              <caret line="6" column="43" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="43" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductPhotoCollection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/ProductPhotoCollection.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-              <folding>
-                <element signature="e#42#65#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="312">
-                <caret line="328" column="17" lean-forward="false" selection-start-line="328" selection-start-column="17" selection-end-line="328" selection-end-column="17" />
-                <folding />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -234,13 +170,13 @@
         <option value="$PROJECT_DIR$/app/Models/Product.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/Api/ProductOrdersCollection.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ProductController.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/Api/CustomerOrdersCollection.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/Api/CustomerResource.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/Api/OrderResource.php" />
         <option value="$PROJECT_DIR$/database/seeds/OrdersTableSeeder.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -749,12 +685,12 @@
       <workItem from="1572246853560" duration="19357000" />
       <workItem from="1572268125207" duration="16728000" />
       <workItem from="1572287606740" duration="10348000" />
-      <workItem from="1572330758329" duration="9702000" />
+      <workItem from="1572330758329" duration="12154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361308000" />
+    <option name="totallyTimeSpent" value="363760000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -769,7 +705,7 @@
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33625498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06613546" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985073" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1141,17 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="312">
-            <caret line="328" column="17" lean-forward="false" selection-start-line="328" selection-start-column="17" selection-end-line="328" selection-end-column="17" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/ProductOrdersCollection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1177,22 +1102,6 @@
           <folding>
             <element signature="e#44#67#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/ProductPhotoResource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="43" column="7" lean-forward="false" selection-start-line="43" selection-start-column="7" selection-end-line="47" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/CustomerResource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,13 +1131,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/ProductPhotoResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="43" column="7" lean-forward="false" selection-start-line="43" selection-start-column="7" selection-end-line="47" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/CustomerResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="43" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Resources/Api/CustomerOrdersCollection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="30" />
+          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="57" />
           <folding>
             <element signature="e#42#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="432">
+            <caret line="348" column="4" lean-forward="false" selection-start-line="348" selection-start-column="4" selection-end-line="348" selection-end-column="4" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
